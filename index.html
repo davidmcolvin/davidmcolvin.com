@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DavidMColvin.com</title>
+<link rel="stylesheet" href="css/style.css"  />
+</head>
+
+<body onload="animate();">
+<header>
+    <h1>DavidMColvin.com</h1>
+    <nav> <a href="about.html">About me</a> |  <a href="resume.html">R&#233;sum&#233;</a> | <a href="transcripts.html">Transcripts</a> | <a href="certifications.html">Certifications</a> | <a href="portfolio.html">Portfolio</a></nav>
+</header>
+
+<p>This website is currently under construction</p>
+<div class="frame1" id="animation"></div>
+<footer>
+Thanks for visiting.
+</footer>
+<script>
+var totalFrames = 3;
+var currentFrame = 0;
+
+function animate() {
+  var newFrame = currentFrame + 1;
+  //console.log(currentFrame);	
+  document.getElementById('animation').className = 'frame'+newFrame;
+  if (newFrame===3){
+	  currentFrame = 0;
+  }
+  else {
+	  currentFrame = newFrame;
+  }
+  setTimeout(function(){animate();},500);
+}
+</script>
+</body>
+</html>
