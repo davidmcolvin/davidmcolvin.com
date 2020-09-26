@@ -7,6 +7,9 @@ header {
 	border: 1px solid black;
 	font: "Lucida Sans Unicode", "Lucida Grande", sans-serif	
 }
+header a {
+  color: #0F0	
+}
 h1 {
 	color: #FFF;
 }
