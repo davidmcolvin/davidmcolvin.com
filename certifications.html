@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Certifications</title>
-    <link rel="stylesheet" href="css/style.css"  />
-  </head>
-  <body>
-    <header>
-      <h1>Certifications</h1>
-            <a href="index.html">Home</a>
-    </header>
-    <ul>
-      <li>Microsoft 70-480 Programming in HTML5 with JavaScript and CSS3</li>
-      <li>Microsoft 70-761 Querying Data with Transact-SQL</li>
-      <li>Microsoft 98-361 Software Development Fundamentals</li>
-      <li>Microsoft 98-375 HTML5 Application Development Fundamentals</li>
-    </ul>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>Certifications</title>
+		<link rel="stylesheet" href="css/style.css"	/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			var loaded = false;
+			loaded = !!window.jQuery;
+			if (loaded === false)
+			{
+				document.write('<script src="_js/jquery-3.5.1.min.js"><\/script>')
+			}
+		</script>
+	</head>
+	<body>
+	<header>
+		<a href="index.html">
+			<img id="davidmcolvin" src="img/davidmcolvin.png">
+		</a>
+		<!--Navigation bar-->
+		<div id="nav-placeholder">
+
+		</div>
+	</header>
+		<ul>
+			<li>Microsoft 70-480 Programming in HTML5 with JavaScript and CSS3</li>
+			<li>Microsoft 70-761 Querying Data with Transact-SQL</li>
+			<li>Microsoft 98-361 Software Development Fundamentals</li>
+			<li>Microsoft 98-375 HTML5 Application Development Fundamentals</li>
+		</ul>
+			<script>
+			$(function(){
+  			$("#nav-placeholder").load("nav.html");
+			});
+		</script>
+	</body>
 </html>

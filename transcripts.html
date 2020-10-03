@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Transcripts</title>
-    <link rel="stylesheet" href="css/style.css"  />
-  </head>
-  <body>
-    <header>
-      <h1>Transcripts</h1>
-      <a href="index.html">Home</a>
-    </header>
-    <p>Content coming soon.</p>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>Transcripts</title>
+		<link rel="stylesheet" href="css/style.css"	/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			var loaded = false;
+			loaded = !!window.jQuery;
+			if (loaded === false)
+			{
+				document.write('<script src="_js/jquery-3.5.1.min.js"><\/script>')
+			}
+		</script>
+	</head>
+	<body>
+	<header>
+		<a href="index.html">
+			<img id="davidmcolvin" src="img/davidmcolvin.png">
+		</a>
+		<!--Navigation bar-->
+		<div id="nav-placeholder">
+
+		</div>
+	</header>
+		<p>Content coming soon.</p>
+		<script>
+			$(function(){
+  			$("#nav-placeholder").load("nav.html");
+			});
+		</script>
+	</body>
 </html>

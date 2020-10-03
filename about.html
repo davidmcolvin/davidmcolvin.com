@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>About Me</title>
-    <link rel="stylesheet" href="css/style.css"  />
-  </head>
-  <body>
-    <header>
-      <h1>About Me</h1>
-      <a href="index.html">Home</a>
-    </header>
-    <p>I was born in Michigan, lived in Illinois as a small child and then ended up back in Michigan for most of my life.  I
-    graduated from Rockford High School.  Then I studied all things computers in college at Grand Rapids Community 
-    College and Ferris State University.  I am currently employed at <a href="https://www.harriscomputer.com/">Harris Computer</a> 
-    where I work on a property tax application called <a href="https://www.aumentumtech.com/">Aumentum.</a>  I mainly work on 
-    calculations that keep track of values on people's homes, but I do other stuff as well.</p>
-    
-    <p>For my hobbies, I will do tutorials and read books on programming.  I also try to keep my mind in shape by learning Spanish 
-    and my body in shape by exercising.  If I get a chance, I have an interest in electronics and will build some circuits, or I
-    will try to learn something in Adobe.</p>
-    
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>About Me</title>
+		<link rel="stylesheet" href="css/style.css"	/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			var loaded = false;
+			loaded = !!window.jQuery;
+			if (loaded === false)
+			{
+				document.write('<script src="_js/jquery-3.5.1.min.js"><\/script>')
+			}
+		</script>
+	</head>
+<body>
+<div class="page">
+	<header>
+		<a href="index.html">
+			<img id="davidmcolvin" src="img/davidmcolvin.png">
+		</a>
+		<!--Navigation bar-->
+		<div id="nav-placeholder">
+
+		</div>
+	</header>
+			<p>I was born in Michigan, lived in Illinois as a small child and then ended up back in Michigan for most of my life.	I
+			graduated from Rockford High School.	Then I studied all things computers in college at Grand Rapids Community 
+			College and Ferris State University.	I am currently employed at <a href="https://www.harriscomputer.com/">Harris Computer</a> 
+			where I work on a property tax application called <a href="https://www.aumentumtech.com/">Aumentum.</a>	I mainly work on 
+		calculations that keep track of values on people's homes, but I do other stuff as well.</p>
+			
+			<p>For my hobbies, I am first and foremost a programmer, so I am always learning new things about coding.	I also am always learning Spanish and math. I also enjoy  electrical engineering and try to exercise regularly.</p>
+</div>
+<script>
+	$(function(){
+			$("#nav-placeholder").load("nav.html");
+	});
+</script>
+</body>
 </html>
