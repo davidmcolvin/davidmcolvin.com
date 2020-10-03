@@ -15,20 +15,22 @@
 		</script>
 	</head>
 	<body>
-	<header>
-		<a href="index.html">
-			<img id="davidmcolvin" src="img/davidmcolvin.png">
-		</a>
-		<!--Navigation bar-->
-		<div id="nav-placeholder">
+		<div class="page">
+			<header>
+			<a href="index.html">
+				<img id="davidmcolvin" src="img/davidmcolvin.png">
+			</a>
+			<!--Navigation bar-->
+			<div id="nav-placeholder">
 
+			</div>
+			</header>
+			<p>Content coming soon.</p>
+			<script>
+				$(function(){
+					$("#nav-placeholder").load("nav.html");
+				});
+			</script>
 		</div>
-	</header>
-		<p>Content coming soon.</p>
-		<script>
-			$(function(){
-  			$("#nav-placeholder").load("nav.html");
-			});
-		</script>
 	</body>
 </html>
