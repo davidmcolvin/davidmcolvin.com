@@ -28,10 +28,12 @@ html, body {
 	font: "Lucida Sans Unicode", "Lucida Grande", sans-serif	
 }
 p{
-	text-align:left;
+	text-align:center;
 }
 h1 {
 	color: #0d7377;
+}
+h2 {
 }
 a:link {
 	color: dodgerblue;
@@ -55,6 +57,14 @@ a:active {
 	color: yellow;
 	background-color: transparent;
 	text-decoration: underline;
+}
+.photo{
+	display: inline-block;
+	border: solid 1px black;
+	border-radius: 5px;
+	padding: 3px;
+	background:cornsilk;
+	margin: 5px;
 }
 /*#animation
 {
