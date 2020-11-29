@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="jquery-3.5.1.min.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132453854072564699" remote="132482398510000000" />
+<file name="jquery-3.5.1.min.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132453854072564699" remote="132484105480000000" />
+<file name="board.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484091643909960" remote="132484105480000000" />
+<file name="bubble.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484091643909960" remote="132484105480000000" />
+<file name="collision-detector.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484091643914928" remote="132484105480000000" />
+<file name="game.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484085306096535" remote="132484105480000000" />
+<file name="jquery.kaboom.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484089208143698" remote="132484105490000000" />
+<file name="modernizr.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484091643929800" remote="132484105490000000" />
+<file name="ui.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484091643934771" remote="132484105490000000" />
 </dwsync>
