@@ -33,9 +33,7 @@ BubbleShoot.ui = (function($){
 			return angle;
 		},
 		fireBubble : function(bubble,coords,duration){
-			debugger;
 			var complete = function(){
-				debugger;
 				if(bubble.getRow()!==null)
 				{
 					bubble.getSprite().css(Modernizr.prefixed("transition"),"");
