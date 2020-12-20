@@ -122,3 +122,8 @@ body
 	-webkit-transform:scale(1.1);
 	-ms-transform:scale(1.1);
 }
+.game_canvas
+{
+	width:1000px;
+	height:620px;
+}
