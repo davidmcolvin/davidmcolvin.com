@@ -19,10 +19,10 @@ BubbleShoot.Bubble = (function($){
 		this.getState = function(){return state;};
 		this.setState = function(stateIn){
 			state = stateIn;
-			startState = Date.now();
+			stateStart = Date.now();
 		};
 		this.getTimeInState = function(){
-			return Date.now() - startState;
+			return Date.now() - stateStart;
 		}
 		this.getType = function() {return type;};
 		this.getSprite = function() { return sprite;};
@@ -64,9 +64,16 @@ BubbleShoot.Bubble = (function($){
 		if(type === undefined){
 			type = Math.floor(Math.random() * 4);
 		}
-		var sprite = $(document.createElement("div"));
-		sprite.addClass("bubble");
-		sprite.addClass("bubble_"+type);
+		if (!BubbleShoot.Renderer){
+			var sprite = $(document.createElement("div"));
+			sprite.addClass("bubble");
+			sprite.addClass("bubble_"+type);
+		}
+		else
+		{
+			var sprite = new BubbleShoot.Sprite();
+		}
+
 		var bubble = new Bubble(rowNum,colNum,type,sprite);
 		return bubble;
 	};

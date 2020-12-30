@@ -8,7 +8,8 @@ BubbleShoot.Game = (function($) {
 	var numBubbles;
 	var bubbles = [];
 	var MAX_BUBBLES=70;
-	this.init = function(){
+	var requestAnimationID;
+	this.init = function(){ 
 		if (BubbleShoot.Renderer)
 		{
 			BubbleShoot.Renderer.init(function(){
@@ -24,10 +25,20 @@ BubbleShoot.Game = (function($) {
 		$(".but_start_game").unbind("click");
 		numBubbles = MAX_BUBBLES;
 		BubbleShoot.ui.hideDialog();
-		curBubble = getNextBubble();
 		board = new BubbleShoot.Board();
 		bubbles = board.getBubbles();
-		BubbleShoot.ui.drawBoard(board);
+		if (BubbleShoot.Renderer)
+		{
+			if (!requestAnimationID)
+			{
+				requestAnimationID = setTimeout(renderFrame,40);
+			}
+		}
+		else
+		{
+			BubbleShoot.ui.drawBoard(board);
+		}
+		curBubble = getNextBubble();
 		 $("#game").bind("click", clickGameScreen);
 	};
 	var getNextBubble = function(){
@@ -35,6 +46,12 @@ BubbleShoot.Game = (function($) {
 			bubbles.push(bubble);
 			bubble.setState(BubbleShoot.BubbleState.CURRENT);
 			bubble.getSprite().addClass("cur_bubble");
+			var top = 470;
+			var left = ($("#board").width() - BubbleShoot.ui.BUBBLE_DIMS)/2;
+			bubble.getSprite().css({
+				top : top,
+				left : left
+			});
 			$("#board").append(bubble.getSprite());
 			BubbleShoot.ui.drawBubblesRemaining(numBubbles);
 			numBubbles--;
@@ -100,6 +117,10 @@ BubbleShoot.Game = (function($) {
 				});
 			}, delay);
 		});
+	};
+	var renderFrame = function(){
+		BubbleShoot.Renderer.render(bubbles);
+		requestAnimationID = setTimeout(renderFrame,40);
 	};
 };
 return Game;
