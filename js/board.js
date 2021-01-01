@@ -2,8 +2,8 @@
 
 var BubbleShoot = window.BubbleShoot || {};
 BubbleShoot.Board = (function($){
-	var NUM_ROWS = 9;
-	var NUM_COLS = 32;
+	var NUM_ROWS = 1;
+	var NUM_COLS = 4;
 	var Board = function(){
 		var that = this;
 		var rows = createLayout();
@@ -132,6 +132,9 @@ BubbleShoot.Board = (function($){
 			};
 			return bubbles;
 		};
+		this.isEmpty = function() {
+			return this.getBubbles().length == 0;
+		}
 	return this;
 	};
 	var createLayout = function(){

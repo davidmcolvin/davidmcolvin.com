@@ -8,7 +8,6 @@ BubbleShoot.Renderer = (function($){
 	var BUBBLE_IMAGE_DIM = 50;
 	var Renderer = {
 		init : function(callback){
-			 
 			canvas = document.createElement("canvas");
 			$(canvas).addClass("game_canvas");
 			$("#game").prepend(canvas);

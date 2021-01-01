@@ -7,7 +7,12 @@ BubbleShoot.Game = (function($) {
 	var board;
 	var numBubbles;
 	var bubbles = [];
-	var MAX_BUBBLES=70;
+	var MAX_BUBBLES = 70;
+	var POINTS_PER_BUBBLE = 50;
+	var MAX_ROWS = 11;
+	var level = 0;
+	var score = 0;
+	var highScore = 0;
 	var requestAnimationID;
 	this.init = function(){ 
 		if (BubbleShoot.Renderer)
@@ -25,6 +30,7 @@ BubbleShoot.Game = (function($) {
 		$(".but_start_game").unbind("click");
 		numBubbles = MAX_BUBBLES;
 		BubbleShoot.ui.hideDialog();
+		numBubbles = MAX_BUBBLES - level * 5;
 		board = new BubbleShoot.Board();
 		bubbles = board.getBubbles();
 		if (BubbleShoot.Renderer)
@@ -39,7 +45,22 @@ BubbleShoot.Game = (function($) {
 			BubbleShoot.ui.drawBoard(board);
 		}
 		curBubble = getNextBubble();
+		var jQueryObject = $("#game");
+		var rawDOMElement = jQueryObject.get(0);
+		var eventObject = $._data(rawDOMElement, 'events');
+		if (eventObject == undefined)
+		{
 		 $("#game").bind("click", clickGameScreen);
+		}
+		else
+		{
+			if (eventObject.click == undefined)
+			{
+				$("#game").bind("click", clickGameScreen);
+			}
+		}
+		 BubbleShoot.ui.drawScore(score);
+		 BubbleShoot.ui.drawLevel(level);
 	};
 	var getNextBubble = function(){
 			var bubble = BubbleShoot.Bubble.create();
@@ -74,6 +95,12 @@ BubbleShoot.Game = (function($) {
 				var orphans = board.findOrphans();
 				var delay = duration + 200 + 30 * group.list.length;
 				dropBubbles(orphans,delay);
+				var popped = [].concat(group.list,orphans);
+				var points = popped.length * POINTS_PER_BUBBLE;
+				score += points;
+				setTimeout(function(){
+					BubbleShoot.ui.drawScore(score);
+				},delay);
 			}
 		}
 		else
@@ -84,7 +111,22 @@ BubbleShoot.Game = (function($) {
 			var coords = { x:bubbleCoords.left + distX, y:bubbleCoords.top - distY };
 		}
 		BubbleShoot.ui.fireBubble(curBubble,coords,duration);
-		curBubble = getNextBubble();
+		if (board.getRows().length > MAX_ROWS)
+		{
+			endGame(false);
+		}
+		else if(board.isEmpty())
+		{
+			endGame(true);
+		}
+		else if (numBubbles == 0) 
+		{
+			endGame(false);
+		}
+		else
+		{
+			curBubble = getNextBubble();
+		}
 	};
 	var popBubbles = function(bubbles, delay) {
 		$.each(bubbles,function(){
@@ -127,6 +169,30 @@ BubbleShoot.Game = (function($) {
 		});
 		BubbleShoot.Renderer.render(bubbles);
 		requestAnimationID = setTimeout(renderFrame,40);
+	};
+	var endGame = function(hasWon){
+		var displayScore = score;;
+		if(score>highScore){
+			highScore = score;
+			$("#new_high_score").show();
+			BubbleShoot.ui.drawHighScore(highScore);
+		}
+		else
+		{
+			$("#new_high_score").hide();
+		}
+		if (hasWon)
+		{
+			level++;
+		}
+		else
+		{
+			score = 0;
+			level = 0;
+		}
+		$(".but_start_game").bind("click",startGame);	
+		$("#board .bubble").remove();
+		BubbleShoot.ui.endGame(hasWon,displayScore);
 	};
 };
 return Game;

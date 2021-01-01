@@ -7,6 +7,15 @@ BubbleShoot.ui = (function($){
 		ROW_HEIGHT : 40,
 		init: function(){
 		},
+		drawScore: function(score){
+			$("#score").text(score);
+		},
+		drawHighScore: function(highScore){
+			$("#high_score").text(highScore);
+		},
+		drawLevel: function(level){
+			$("#level").text(level+1);
+		},
 		hideDialog: function(){
 			$(".dialog").fadeOut(300);
 		},
@@ -35,7 +44,7 @@ BubbleShoot.ui = (function($){
 		fireBubble : function(bubble,coords,duration){
 			bubble.setState(BubbleShoot.BubbleState.FIRING);
 			var complete = function(){
-				if(bubble.getRow()!==null)
+				if(typeof(bubble.getRow()) != 'undefined')
 				{
 					bubble.getSprite().css(Modernizr.prefixed("transition"),"");
 					bubble.getSprite().css({
@@ -96,6 +105,21 @@ BubbleShoot.ui = (function($){
 		},
 		drawBubblesRemaining:function(numBubbles){
 			$("#bubbles_remaining").text(numBubbles);
+		},
+		endGame: function(hasWon,score){
+			$("game").unbind("click");
+			BubbleShoot.ui.drawBubblesRemaining(0);
+			if(hasWon){
+				$(".level_complete").show();
+				$(".level_failed").hide();
+			}
+			else
+			{
+				$(".level_complete").hide();
+				$(".level_failed").show();
+			}
+			$("#end_game").fadeIn(500);
+			$("#final_score_value").text(score);
 		}
 	};
 	return ui;
