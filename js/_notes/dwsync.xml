@@ -4,10 +4,11 @@
 <file name="board.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132539425056459873" remote="132539425580000000" />
 <file name="bubble.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132538578044186838" remote="132538582310000000" />
 <file name="collision-detector.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484091643914928" remote="132484105480000000" />
-<file name="game.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132540244852848346" remote="132540247850000000" />
-<file name="jquery.kaboom.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132484089208143698" remote="132484105490000000" />
+<file name="game.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132540307798332496" remote="132540318180000000" />
+<file name="jquery.kaboom.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132540290566317254" remote="132540318230000000" />
 <file name="modernizr.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132515232180024089" remote="132515245730000000" />
 <file name="ui.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132539379046647397" remote="132539424050000000" />
 <file name="renderer.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132539397079859030" remote="132539424040000000" />
 <file name="sprite.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132538573518416586" remote="132538582470000000" />
+<file name="sounds.js" server="davidmcolvin.com.dream.website/davidmcolvin.com/" local="132540312166259933" remote="132540318250000000" />
 </dwsync>
