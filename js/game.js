@@ -7,7 +7,7 @@ BubbleShoot.Game = (function($) {
 	var board;
 	var numBubbles;
 	var bubbles = [];
-	var MAX_BUBBLES = 70;
+	var MAX_BUBBLES = 10;
 	var POINTS_PER_BUBBLE = 50;
 	var MAX_ROWS = 11;
 	var level = 0;
@@ -48,19 +48,21 @@ BubbleShoot.Game = (function($) {
 		var jQueryObject = $("#game");
 		var rawDOMElement = jQueryObject.get(0);
 		var eventObject = $._data(rawDOMElement, 'events');
-		if (eventObject == undefined)
+		if (eventObject && eventObject.click)
 		{
-		 $("#game").bind("click", clickGameScreen);
+		 //do nothing
 		}
 		else
 		{
-			if (eventObject.click == undefined)
-			{
-				$("#game").bind("click", clickGameScreen);
-			}
+			$("#game").bind("click", clickGameScreen);
 		}
-		 BubbleShoot.ui.drawScore(score);
-		 BubbleShoot.ui.drawLevel(level);
+		if (window.localStorage && localStorage.getItem("high_score"))
+		{
+			highScore = parseInt(localStorage.getItem("high_score"));
+		}
+		BubbleShoot.ui.drawHighScore(highScore);
+		BubbleShoot.ui.drawScore(score);
+		BubbleShoot.ui.drawLevel(level);
 	};
 	var getNextBubble = function(){
 			var bubble = BubbleShoot.Bubble.create();
@@ -92,6 +94,20 @@ BubbleShoot.Game = (function($) {
 			if(group.list.length >= 3)
 			{
 				popBubbles(group.list,duration);
+				var topRow = board.getRows()[0];
+				var topRowBubbles = [];
+				for (var i = 0; i < topRow.length; i++)
+				{
+					if (topRow[i])
+					{
+						topRowBubbles.push(topRow[i]);
+					}
+				}
+				if(topRowBubbles.length <= 5)
+				{
+					popBubbles(topRowBubbles,duration);
+					group.list.concat(topRowBubbles);
+				}
 				var orphans = board.findOrphans();
 				var delay = duration + 200 + 30 * group.list.length;
 				dropBubbles(orphans,delay);
@@ -113,15 +129,21 @@ BubbleShoot.Game = (function($) {
 		BubbleShoot.ui.fireBubble(curBubble,coords,duration);
 		if (board.getRows().length > MAX_ROWS)
 		{
-			endGame(false);
+			setTimeout(function(){
+				endGame(false);;
+			},delay);
 		}
 		else if(board.isEmpty())
 		{
-			endGame(true);
+			setTimeout(function(){
+				endGame(true);;
+			},delay);
 		}
 		else if (numBubbles == 0) 
 		{
-			endGame(false);
+			setTimeout(function(){
+				endGame(false);;
+			},delay);
 		}
 		else
 		{
@@ -176,6 +198,10 @@ BubbleShoot.Game = (function($) {
 			highScore = score;
 			$("#new_high_score").show();
 			BubbleShoot.ui.drawHighScore(highScore);
+			if (window.localStorage)
+			{
+				localStorage.setItem("high_score",highScore);
+			}
 		}
 		else
 		{
