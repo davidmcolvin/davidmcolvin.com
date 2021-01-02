@@ -37,7 +37,7 @@ BubbleShoot.Game = (function($) {
 		{
 			if (!requestAnimationID)
 			{
-				requestAnimationID = setTimeout(renderFrame,40);
+				requestAnimationID = requestAnimationFrame(renderFrame);
 			}
 		}
 		else
@@ -159,6 +159,7 @@ BubbleShoot.Game = (function($) {
 				setTimeout(function(){
 					bubble.setState(BubbleShoot.BubbleState.POPPED);
 				},200);
+				BubbleShoot.Sounds.play("mp3/pop.mp3",Math.random()*.5 + .5);
 			}, delay);
 			board.popBubbleAt(this.getRow(), this.getCol());
 			setTimeout(function(){
@@ -190,7 +191,7 @@ BubbleShoot.Game = (function($) {
 			}
 		});
 		BubbleShoot.Renderer.render(bubbles);
-		requestAnimationID = setTimeout(renderFrame,40);
+		requestAnimationID = requestAnimationFrame(renderFrame);
 	};
 	var endGame = function(hasWon){
 		var displayScore = score;;
@@ -220,6 +221,8 @@ BubbleShoot.Game = (function($) {
 		$("#board .bubble").remove();
 		BubbleShoot.ui.endGame(hasWon,displayScore);
 	};
+	window.requestAnimationFrame = Modernizr.prefixed("requestAnimationFrame",window) ||
+		function(callback){window.setTimeout(function(){callback()},40)};
 };
 return Game;
 })(jQuery);
